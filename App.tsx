@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { 
   ShoppingBag, 
@@ -9,18 +8,22 @@ import {
   CheckSquare, 
   Flame,
   Heart,
-  Users,
-  CircleDollarSign,
-  ShieldCheck,
-  GraduationCap,
-  Sparkles,
-  Facebook,
-  Instagram,
-  Youtube,
+  Users, 
+  CircleDollarSign, 
+  ShieldCheck, 
+  Sparkles, 
+  Facebook, 
+  Instagram, 
+  Youtube, 
   BookOpen
 } from 'lucide-react';
 
-// --- Custom SVGs for platforms not in basic Lucide ---
+// --- Constants & Assets ---
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScZ_eVISerCUNG_fhV1zmMZRmTl3jedWn42_ey_S_wdP69MOw/viewform?usp=header";
+const LOGO_URL = "https://i.postimg.cc/FsTHHCvG/1cba87bb-a409-459f-a19b-06a8351bac9d.png";
+const BG_IMAGE = "https://i.postimg.cc/Pxrc6yL0/df8f256e-edfd-4df6-b600-d92617dbdc5a.png";
+
+// --- Custom SVGs ---
 const TikTokIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
@@ -32,12 +35,6 @@ const WhatsAppIcon = () => (
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
   </svg>
 );
-
-// --- Constants ---
-
-const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLScZ_eVISerCUNG_fhV1zmMZRmTl3jedWn42_ey_S_wdP69MOw/viewform?usp=header";
-const LOGO_URL = "https://i.postimg.cc/FsTHHCvG/1cba87bb-a409-459f-a19b-06a8351bac9d.png";
-const BG_IMAGE = "https://i.postimg.cc/Pxrc6yL0/df8f256e-edfd-4df6-b600-d92617dbdc5a.png";
 
 // --- Sub-components ---
 
@@ -51,11 +48,11 @@ const Navbar: React.FC = () => (
       />
     </div>
     <div className="hidden md:flex items-center space-x-8 text-white text-sm font-light">
-      <a href="#" className="hover:text-gray-300">Products</a>
-      <a href="#" className="hover:text-gray-300">Services</a>
-      <a href="#" className="hover:text-gray-300">About</a>
-      <a href="#" className="hover:text-gray-300">Community</a>
-      <a href="#" className="hover:text-gray-300">Login</a>
+      <a href="#" className="hover:text-gray-300 transition-colors">Products</a>
+      <a href="#" className="hover:text-gray-300 transition-colors">Services</a>
+      <a href="#" className="hover:text-gray-300 transition-colors">About</a>
+      <a href="#" className="hover:text-gray-300 transition-colors">Community</a>
+      <a href="#" className="hover:text-gray-300 transition-colors">Login</a>
       <ShoppingBag className="w-5 h-5 cursor-pointer" />
     </div>
   </nav>
@@ -76,13 +73,13 @@ const Hero: React.FC = () => (
     {/* Content Overlay */}
     <div className="relative z-10 container mx-auto px-4 pt-20 flex flex-col items-start lg:items-start text-left lg:ml-20">
       <div className="max-w-4xl">
-        <h1 className="text-6xl md:text-8xl font-black text-white leading-tight uppercase tracking-tighter drop-shadow-2xl">
+        <h1 className="text-6xl md:text-8xl font-black text-white leading-tight uppercase tracking-tighter drop-shadow-2xl animate-fadeInUp">
           KINGDOM <br />
           <span className="text-red-600">FAMILY</span> <br />
           SCHOOL
         </h1>
         
-        <div className="mt-8 bg-white inline-block px-8 py-4 rounded-xl shadow-xl">
+        <div className="mt-8 bg-white inline-block px-8 py-4 rounded-xl shadow-xl animate-fadeInUp delay-200">
           <p className="text-red-700 text-2xl md:text-2xl font-bold italic text-center leading-tight">
             A 6-month foundational training <br />
             Once a week – Saturday <br />
@@ -90,23 +87,21 @@ const Hero: React.FC = () => (
           </p>
         </div>
 
-        <div className="mt-12 max-w-2xl">
+        <div className="mt-12 max-w-2xl animate-fadeInUp delay-500">
           <div className="text-white text-lg md:text-xl font-light italic leading-relaxed space-y-4 drop-shadow-lg">
             <p>
-              English: <br />
               Through skillful and godly wisdom a house, a life, a home and a family is built…
             </p>
             <p>
-              Local language: <br />
               UBWENGE BUVA KU MANA DATA UKO BWUBAKA URUGO RURIMWO UMUTIMA W’UBWAMI
             </p>
           </div>
-          <p className="text-white text-2xl font-semibold mt-4 drop-shadow-lg">Proverbs 24–34</p>
+          <p className="text-white text-2xl font-semibold mt-4 drop-shadow-lg">Proverbs 24:3-4</p>
         </div>
       </div>
 
       {/* Floating secondary logo in hero */}
-      <div className="absolute top-0 right-0 m-8 hidden lg:block h-20 w-auto opacity-80">
+      <div className="absolute top-0 right-0 m-8 hidden lg:block h-20 w-auto opacity-80 animate-fadeInUp delay-700">
         <img 
           src={LOGO_URL} 
           alt="Kingdom Family School Logo Small" 
@@ -114,16 +109,8 @@ const Hero: React.FC = () => (
         />
       </div>
 
-      {/* Enrollment Button Bottom Right */}
-      <div className="absolute bottom-12 right-12 md:right-24 flex flex-col items-center gap-4">
-        <a 
-          href={FORM_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border-4 border-white text-white text-3xl font-black px-10 py-3 rounded-2xl hover:bg-white/10 transition-colors uppercase text-center inline-block backdrop-blur-sm"
-        >
-          Enroll Now
-        </a>
+      {/* Scroll Indicator Bottom Right (Removed Enroll Now button as requested) */}
+      <div className="absolute bottom-12 right-12 md:right-24 flex flex-col items-center animate-fadeInUp delay-1000">
         <ChevronDown className="text-white w-10 h-10 animate-bounce" />
       </div>
     </div>
@@ -175,19 +162,19 @@ const DetailsSection: React.FC = () => (
       <div className="space-y-4 mb-16 inline-flex flex-col items-start text-left mx-auto">
         <div className="flex items-center gap-3">
           <Calendar className="w-5 h-5 text-gray-400" />
-          <span className="font-semibold">🗓 Starts: Saturday, February 14th, 2026</span>
+          <span className="font-semibold text-gray-900">🗓 Starts: Saturday, February 14th, 2026</span>
         </div>
         <div className="flex items-center gap-3">
           <Clock className="w-5 h-5 text-gray-400" />
-          <span className="font-semibold">🧭 Schedule: Once a week — 2 hours</span>
+          <span className="font-semibold text-gray-900">🧭 Schedule: Once a week — 2 hours</span>
         </div>
         <div className="flex items-center gap-3">
           <Clock className="w-5 h-5 text-gray-400" />
-          <span className="font-semibold">⏰ Time: 9:30 PM – 11:30 PM (Burundi / Rwanda Time)</span>
+          <span className="font-semibold text-gray-900">⏰ Time: 9:30 PM – 11:30 PM (Burundi / Rwanda Time)</span>
         </div>
         <div className="flex items-center gap-3">
           <MapPin className="w-5 h-5 text-red-700" />
-          <span className="font-semibold">📍 Format: Live online sessions (Google Meet)</span>
+          <span className="font-semibold text-gray-900">📍 Format: Live online sessions (Google Meet)</span>
         </div>
       </div>
 
@@ -326,14 +313,9 @@ const CourseOutline: React.FC = () => {
             <p className="text-2xl text-gray-600 italic font-medium">Kingdom Family Class</p>
             <Sparkles className="w-5 h-5 text-red-600" />
           </div>
-          <p className="text-lg md:text-xl font-bold text-red-700 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl font-bold text-red-700 max-w-2xl mx-auto text-center">
             A Life-Changing Journey into Spiritual, Emotional, and Family Wholeness
           </p>
-        </div>
-
-        <div className="bg-red-50/50 p-8 rounded-3xl border border-red-100 mb-16 text-center max-w-3xl mx-auto shadow-sm">
-          <h3 className="text-2xl font-black text-red-800 mb-2">🌟 BASIC FAMILY MASTERING COURSE</h3>
-          <p className="text-red-700 italic font-medium">Building strong, healed, and Christ-centered families.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
@@ -369,7 +351,7 @@ const CourseOutline: React.FC = () => {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="text-left">
               <h3 className="text-3xl font-black serif mb-6 tracking-tight uppercase">PROGRAM DETAILS</h3>
-              <p className="text-gray-400 mb-8 max-sm italic">Join us for this transformative 6-month journey into the heart of Kingdom family dynamics.</p>
+              <p className="text-gray-400 mb-8 max-w-sm italic">Join us for this transformative 6-month journey into the heart of Kingdom family dynamics.</p>
               <a 
                 href={FORM_URL}
                 target="_blank"
@@ -406,7 +388,7 @@ const CourseOutline: React.FC = () => {
                 <div className="p-3 bg-white/10 rounded-xl"><MapPin className="w-6 h-6 text-red-400" /></div>
                 <div>
                   <p className="text-xs text-gray-400 uppercase tracking-widest font-bold">Time & Mode</p>
-                  <p className="text-lg font-bold">21:00 (BI) — Online</p>
+                  <p className="text-lg font-bold">21:30 (BI) — Online</p>
                 </div>
               </div>
             </div>
@@ -432,7 +414,7 @@ const EventGallery: React.FC = () => {
   return (
     <section className="bg-white py-24 px-4 border-t border-gray-100">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-black text-center mb-16 serif uppercase tracking-tight text-gray-900 leading-tight">
+        <h2 className="text-3xl md:text-4xl font-black text-center mb-16 serif uppercase tracking-tight text-gray-900 leading-tight text-center">
           Discover Our Family Gala Night and <br className="hidden md:block" /> Graduation Celebrations
         </h2>
         
@@ -478,7 +460,7 @@ const Footer: React.FC = () => {
       name: "Instagram",
       icon: <Instagram className="w-8 h-8" />,
       link: "https://www.instagram.com/ni_joshuangabo",
-      color: "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)"
+      color: "#bc1888"
     },
     {
       name: "WhatsApp",
@@ -491,7 +473,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-b from-gray-50 to-gray-100 py-24 px-8 border-t border-gray-100">
       <div className="container mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-black serif text-gray-900 mb-4 tracking-tight">Stay Connected With Us</h2>
+        <h2 className="text-4xl md:text-5xl font-black serif text-gray-900 mb-4 tracking-tight uppercase">Stay Connected With Us</h2>
         <p className="text-lg text-gray-500 mb-12 italic font-medium">Follow us or contact us directly anytime</p>
         
         <div className="flex flex-wrap justify-center gap-6 md:gap-10">
@@ -512,12 +494,14 @@ const Footer: React.FC = () => {
             </a>
           ))}
         </div>
+        <div className="mt-20 pt-10 border-t border-gray-200 opacity-60">
+           <img src={LOGO_URL} className="h-10 mx-auto mb-4" alt="Logo" />
+           <p className="text-xs uppercase tracking-widest font-bold">© 2026 Kingdom Family School</p>
+        </div>
       </div>
     </footer>
   );
 };
-
-// --- Main App Component ---
 
 const App: React.FC = () => {
   return (
